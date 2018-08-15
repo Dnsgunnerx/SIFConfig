@@ -6,7 +6,7 @@
 #>
 
 # Bring parameters into scope
-. $PSScriptRoot\parameters.ps1
+. $PSScriptRoot\parameters.ps1 
 
 ### Run installs
 
