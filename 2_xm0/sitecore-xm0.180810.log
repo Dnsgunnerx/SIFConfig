@@ -1,0 +1,155 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20180810205635
+Username: EC2AMAZ-6NG9VT8\Administrator
+RunAs User: EC2AMAZ-6NG9VT8\Administrator
+Machine: EC2AMAZ-6NG9VT8 (Microsoft Windows NT 10.0.14393.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 4776
+PSVersion: 5.1.14393.2363
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14393.2363
+BuildVersion: 10.0.14393.2363
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Sitecore\XP Demos\2_xm0\sitecore-xm0.180810.log
+                                                                                                                                             ************************************
+                                                                                                                                                  Sitecore Install Framework
+                                                                                                                                                       Version - 1.2.1
+                                                                                                                                             ************************************
+
+
+WorkingDirectory  : C:\Sitecore\XP Demos\2_xm0
+LogPath           : C:\Sitecore\XP Demos\2_xm0\sitecore-xm0.180810.log
+WhatIf            : False
+Verbose           : SilentlyContinue
+Configuration     : C:\Sitecore\XP Demos\2_xm0\Configs\sitecore-xm0.json
+Debug             : SilentlyContinue
+WarningAction     : Continue
+ErrorAction       : Stop
+InformationAction : Continue
+
+
+
+
+[------------------------------------------------------------------------------------------------------------------------------------------------ CreatePaths : EnsurePath -------------------------------------------------------------------------------------------------------------------------------------------------]
+[CreatePaths]:[Create] C:\inetpub\wwwroot\sugcon_xm0
+
+[---------------------------------------------------------------------------------------------------------------------------------------------- CreateAppPool : AppPool ----------------------------------------------------------------------------------------------------------------------------------------------------]
+[CreateAppPool]:[Exists] sugcon_xm0
+[CreateAppPool]:[Setting] processModel.identityType => ApplicationPoolIdentity
+
+[---------------------------------------------------------------------------------------------------------------------------------------------- CreateWebsite : Website ----------------------------------------------------------------------------------------------------------------------------------------------------]
+[CreateWebsite]:[Exists] sugcon_xm0
+[CreateWebsite]:[Setting] applicationPool => sugcon_xm0
+[CreateWebsite]:[Setting] physicalPath => C:\inetpub\wwwroot\sugcon_xm0
+
+[------------------------------------------------------------------------------------------------------------------------------------------------ StopWebsite : ManageWebsite ----------------------------------------------------------------------------------------------------------------------------------------------]
+[StopWebsite]:[Stop] sugcon_xm0
+
+[------------------------------------------------------------------------------------------------------------------------------------------------ StopAppPool : ManageAppPool ----------------------------------------------------------------------------------------------------------------------------------------------]
+[StopAppPool]:[Stop] sugcon_xm0
+
+[--------------------------------------------------------------------------------------------------------------------------------------------- CreateBindings : WebBinding -------------------------------------------------------------------------------------------------------------------------------------------------]
+[CreateBindings]:[Remove] 
+protocol bindingInformation sslFlags
+-------- ------------------ --------
+http     *:80:sugcon_xm0           0
+[CreateBindings]:[Add] 
+Name                           Value                                                                                                                                                                                                                                                                                          
+----                           -----                                                                                                                                                                                                                                                                                          
+HostHeader                     sugcon_xm0
+
+[------------------------------------------------------------------------------------------------------------------------------------------- CreateHostHeader : HostHeader -------------------------------------------------------------------------------------------------------------------------------------------------]
+[CreateHostHeader]:[Backup] Created - C:\Windows\system32\drivers\etc\hosts.backup
+[CreateHostHeader]:[Exists] 127.0.0.1 => sugcon_xm0
+
+[--------------------------------------------------------------------------------------------------------------------------------------------- SetPermissions : FilePermissions --------------------------------------------------------------------------------------------------------------------------------------------]
+[SetPermissions]:[Allow] IIS AppPool\sugcon_xm0
+[SetPermissions]:[Path] C:\inetpub\wwwroot\sugcon_xm0
+[SetPermissions]:[Rights] FullControl
+[SetPermissions]:[Inherit] ContainerInherit ObjectInherit
+[SetPermissions]:[Propagate] None
+
+[------------------------------------------------------------------------------------------------------------------------------------------------- InstallWDP : WebDeploy --------------------------------------------------------------------------------------------------------------------------------------------------]
+[WebDeploy]:[Path] C:\Program Files\iis\Microsoft Web Deploy V3\msdeploy.exe
+Info: Object dbDacFx (Sitecore.Exm.Master.dacpac) skipped due to skip directive 'CommandLineSkipDirective 1'.
+Info: Object dbFullSql (CreateUser.ExmMaster.sql) skipped due to skip directive 'CommandLineSkipDirective 2'.
+Info: Object dbDacFx (Sitecore.Reporting.dacpac) skipped due to skip directive 'CommandLineSkipDirective 3'.
+Info: Object dbFullSql (CreateUser.Reporting.sql) skipped due to skip directive 'CommandLineSkipDirective 4'.
+Info: Object dbDacFx (Sitecore.Processing.tasks.dacpac) skipped due to skip directive 'CommandLineSkipDirective 5'.
+Info: Object dbFullSql (CreateUser.ProcessingTasks.sql) skipped due to skip directive 'CommandLineSkipDirective 6'.
+Info: Object dbDacFx (Sitecore.Exm.Master.dacpac) skipped due to skip directive 'CommandLineSkipDirective 1'.
+Info: Object dbFullSql (CreateUser.ExmMaster.sql) skipped due to skip directive 'CommandLineSkipDirective 2'.
+Info: Object dbDacFx (Sitecore.Reporting.dacpac) skipped due to skip directive 'CommandLineSkipDirective 3'.
+Info: Object dbFullSql (CreateUser.Reporting.sql) skipped due to skip directive 'CommandLineSkipDirective 4'.
+Info: Object dbDacFx (Sitecore.Processing.tasks.dacpac) skipped due to skip directive 'CommandLineSkipDirective 5'.
+Info: Object dbFullSql (CreateUser.ProcessingTasks.sql) skipped due to skip directive 'CommandLineSkipDirective 6'.
+Info: Object dbDacFx (Sitecore.Exm.Master.dacpac) skipped due to skip directive 'CommandLineSkipDirective 1'.
+Info: Object dbFullSql (CreateUser.ExmMaster.sql) skipped due to skip directive 'CommandLineSkipDirective 2'.
+Info: Object dbDacFx (Sitecore.Reporting.dacpac) skipped due to skip directive 'CommandLineSkipDirective 3'.
+Info: Object dbFullSql (CreateUser.Reporting.sql) skipped due to skip directive 'CommandLineSkipDirective 4'.
+Info: Object dbDacFx (Sitecore.Processing.tasks.dacpac) skipped due to skip directive 'CommandLineSkipDirective 5'.
+Info: Object dbFullSql (CreateUser.ProcessingTasks.sql) skipped due to skip directive 'CommandLineSkipDirective 6'.
+Info: Object dbDacFx (Sitecore.Exm.Master.dacpac) skipped due to skip directive 'CommandLineSkipDirective 1'.
+Info: Object dbFullSql (CreateUser.ExmMaster.sql) skipped due to skip directive 'CommandLineSkipDirective 2'.
+Info: Object dbDacFx (Sitecore.Reporting.dacpac) skipped due to skip directive 'CommandLineSkipDirective 3'.
+Info: Object dbFullSql (CreateUser.Reporting.sql) skipped due to skip directive 'CommandLineSkipDirective 4'.
+Info: Object dbDacFx (Sitecore.Processing.tasks.dacpac) skipped due to skip directive 'CommandLineSkipDirective 5'.
+Info: Object dbFullSql (CreateUser.ProcessingTasks.sql) skipped due to skip directive 'CommandLineSkipDirective 6'.
+Info: Adding sitemanifest (sitemanifest).
+Info: Object dbDacFx (Sitecore.Exm.Master.dacpac) skipped due to skip directive 'CommandLineSkipDirective 1'.
+Info: Object dbFullSql (CreateUser.ExmMaster.sql) skipped due to skip directive 'CommandLineSkipDirective 2'.
+Info: Object dbDacFx (Sitecore.Reporting.dacpac) skipped due to skip directive 'CommandLineSkipDirective 3'.
+Info: Object dbFullSql (CreateUser.Reporting.sql) skipped due to skip directive 'CommandLineSkipDirective 4'.
+Info: Object dbDacFx (Sitecore.Processing.tasks.dacpac) skipped due to skip directive 'CommandLineSkipDirective 5'.
+Info: Object dbFullSql (CreateUser.ProcessingTasks.sql) skipped due to skip directive 'CommandLineSkipDirective 6'.
+Info: Adding database (data source=localhost\SQLEXPRESS;initial catalog=sugcon_xm0_Core;user id=dev)
+Info: Initializing deployment: Pending.
+Info: Analyzing deployment plan: Pending.
+Info: Updating database: Pending.
+Info: Creating deployment plan: Pending.
+Info: Verifying deployment plan: Pending.
+Info: Deploying package to database: Pending.
+Info: Creating deployment plan: Running.
+Info: Initializing deployment: Running.
+Info: Initializing deployment (Start)
+Info: Initializing deployment: Faulted.
+Info: Initializing deployment (Failed)
+Info: Creating deployment plan: Faulted.
+Info: Verifying deployment plan: Faulted.
+Info: Deploying package to database: Faulted.
+Info: Object dbDacFx (Sitecore.Exm.Master.dacpac) skipped due to skip directive 'CommandLineSkipDirective 1'.
+Info: Object dbFullSql (CreateUser.ExmMaster.sql) skipped due to skip directive 'CommandLineSkipDirective 2'.
+Info: Object dbDacFx (Sitecore.Reporting.dacpac) skipped due to skip directive 'CommandLineSkipDirective 3'.
+Info: Object dbFullSql (CreateUser.Reporting.sql) skipped due to skip directive 'CommandLineSkipDirective 4'.
+Info: Object dbDacFx (Sitecore.Processing.tasks.dacpac) skipped due to skip directive 'CommandLineSkipDirective 5'.
+Info: Object dbFullSql (CreateUser.ProcessingTasks.sql) skipped due to skip directive 'CommandLineSkipDirective 6'.
+**********************
+Command start time: 20180810205919
+**********************
+PS>TerminatingError(Invoke-CommandTask): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Command C:\Program Files\iis\Microsoft Web Deploy V3\msdeploy.exe returned a non-zero exit code - (-1)"
+>> TerminatingError(Invoke-CommandTask): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Command C:\Program Files\iis\Microsoft Web Deploy V3\msdeploy.exe returned a non-zero exit code - (-1)"
+>> TerminatingError(Invoke-CommandTask): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Command C:\Program Files\iis\Microsoft Web Deploy V3\msdeploy.exe returned a non-zero exit code - (-1)"
+Install-SitecoreConfiguration : Command C:\Program Files\iis\Microsoft Web Deploy V3\msdeploy.exe returned a non-zero 
+exit code - (-1)
+At C:\Sitecore\XP Demos\2_xm0\ChrisInstall.ps1:32 char:1
++ Install-SitecoreConfiguration @sitecoreStandalone
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Install-SitecoreConfiguration
+Install-SitecoreConfiguration : Command C:\Program Files\iis\Microsoft Web Deploy V3\msdeploy.exe returned a non-zero exit code - (-1)
+At C:\Sitecore\XP Demos\2_xm0\ChrisInstall.ps1:32 char:1
++ Install-SitecoreConfiguration @sitecoreStandalone
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Install-SitecoreConfiguration
+
+[TIME] 00:02:43
+**********************
+Windows PowerShell transcript end
+End time: 20180810205919
+**********************

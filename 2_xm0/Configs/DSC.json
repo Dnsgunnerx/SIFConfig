@@ -1,0 +1,53 @@
+// -------------------------------------------------------------------------- //
+//         Sitecore Install Framework - XConnect Solr Configuration           //
+//                                                                            //
+//  Run this configuration on your Solr instance to configure the cores for   //
+//  an XConnect deployment. If the cores exist, they will be overwritten.     //
+//                                                                            //
+//  NOTE: Only single line comments are accepted in configurations.           //
+// -------------------------------------------------------------------------- //
+{
+    "Parameters": {
+        // Parameters are values that may be passed when Install-SitecoreConfiguration is called.
+        // Parameters must declare a Type and may declare a DefaultValue and Description.
+        // Parameters with no DefaultValue are required when Install-SitecoreConfiguration is called.
+
+        "package": {
+            "Type": "string",
+            "Description": "The Package pram for tasks"
+        },
+ 
+        "DSCpath": {
+            "Type": "string",
+            "DefaultValue": ".\\Sitecore.ps1",
+            "Description": "DSC Install file."
+        },
+        "InstallPath": {
+            "Type": "command",
+            "DefaultValue": "Start-DscConfiguration -Wait -Verbose -Path .\\Sitecore.ps1",
+            "Description": "DSC Install Path."
+        }
+    },
+    
+
+    "Tasks": {
+        // Tasks are separate units of work in a configuration.
+        // Each task is an action that will be completed when Install-SitecoreConfiguration is called.
+        // By default, tasks are applied in the order they are declared.
+        // Tasks may reference Parameters, Variables, and config functions. 
+        "CheckDSCPath":{
+            "Type": "EnsurePath",
+             "Params":{ 
+                "Exists": "[parameter('DSCPath')]"
+        }
+    },
+        "StartDSC":{
+            "Type": "Command",
+            "Params": {
+                "Path": "[parameter('InstallPath')]",
+                "Argument": "Start-DscConfiguration -Wait -Verbose -Path .\\Sitecore.ps1"
+            }
+        }
+    }
+}
+

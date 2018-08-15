@@ -1,0 +1,44 @@
+// -------------------------------------------------------------------------- //
+//         Sitecore Install Framework - XConnect Solr Configuration           //
+//                                                                            //
+//  Run this configuration on your Solr instance to configure the cores for   //
+//  an XConnect deployment. If the cores exist, they will be overwritten.     //
+//                                                                            //
+//  NOTE: Only single line comments are accepted in configurations.           //
+// -------------------------------------------------------------------------- //
+{
+    "Parameters": {
+        // Parameters are values that may be passed when Install-SitecoreConfiguration is called.
+        // Parameters must declare a Type and may declare a DefaultValue and Description.
+        // Parameters with no DefaultValue are required when Install-SitecoreConfiguration is called.
+ 
+        "SolrPath": {
+            "Type": "string",
+            "DefaultValue": ".\\Install-solr.ps1",
+            "Description": "Solr Install Folder."
+        },
+        "Path": {
+            "Type": "string",
+            "DefaultValue": "C:\\Sitecore\\XP Demos\\2_xm0\\Install-solr.ps1",
+            "Description": "Solr Install Folder."
+    },
+    "Tasks": {
+        // Tasks are separate units of work in a configuration.
+        // Each task is an action that will be completed when Install-SitecoreConfiguration is called.
+        // By default, tasks are applied in the order they are declared.
+        // Tasks may reference Parameters, Variables, and config functions. 
+        "CheckSolrPath":{
+            "Type": "EnsurePath",
+             "Params":{ 
+                "Exists": "[parameter('SolrPath')]"
+        }
+    },
+		"StartSolr":{
+			"Type": "command",
+			"Params": {
+                "Path": "[parameter('Path')]",
+                "Argument": ".\\Install-solr.ps1"
+            }
+		}
+    }
+}
